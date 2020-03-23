@@ -3,9 +3,9 @@
  import './SingleItem.css'
  import Panier from '../Panier/Panier.js'
  import PanierPage from '../PanierPage/PanierPage.js'
- import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
-import ListItem from '../ListItem/ListItem';
+import { Link } from 'react-router-dom';
+//  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//  import ListItem from '../ListItem/ListItem';
 
  class SingleItem extends Component {
 
@@ -19,28 +19,24 @@ import ListItem from '../ListItem/ListItem';
         }
     }
 
-        Ntazi = () => {
-            this.setState({click: false})
-        }
+        // DisplayPanier = () =>  {
+        //     console.log(this.props.data, 'data');
+            
+        // this.setState({click: true})
+        // console.log('single item' , this.props.data);
+        //     }
 
-        DisplayPanier = () =>  {
-                    this.setState({click: true})
-                    console.log(this.props.data.img);
-                    
-                    this.state.itemPanier.push(this.props.data)
-                    // console.log(this.state.itemPanier, "itempanierrr");
-                    // console.log(this.state.click);
-                    // document.getElementsByClassName('container').style = 'opacity: 1'
-                }
         
         DisplayPanierPage = () =>  {
-                    this.setState({clickPanier: true})
-                    // console.log(this.state.click);
-                    // document.getElementsByClassName('container').style = 'opacity: 1'
-                }
-                
+                this.setState({clickPanier: true}) 
+                console.log('single item' , this.props.data);
+                this.props.resultPanier(this.props.data)
+               
+            }
+
     render() {
-        if (!this.state.clickPanier) {
+       
+       
             return <div className="container">
             <div className="spGen">
                 <div className="singleProductPage ">
@@ -67,22 +63,21 @@ import ListItem from '../ListItem/ListItem';
                             <option value="43" className="">43</option>
                             <option value="44" className="">44</option>
                             <option value="45" className="">45</option>
-        
                         </select>
                     </form>
-
-                    <button className="btn btn-success" onClick={this.DisplayPanier}>Ajouter au panier</button> <br/>
-                    { this.state.click ? 
+                <Link to='/panier'>
+                    <button className="btn btn-success" onClick={this.DisplayPanierPage}>Ajouter au panier</button> <br/>
+                </Link>
+                    {/* { this.state.click ? 
 
                         <Panier 
                             data={this.props.data}
                             Ntazi={this.Ntazi} 
                             DisplayPanierPage={this.DisplayPanierPage}
-                            
                         />  
 
                     :  null}
-        
+         */}
                     <p> La Nike React Element 55 s'inspire des chaussures de running classiques, telles que la Nike
                         Internationalist, et intègre la technologie Nike React.
                     </p><br/>
@@ -117,16 +112,8 @@ import ListItem from '../ListItem/ListItem';
                     </div>
                 </div>
         </div>
-        } else {
-            return (
-            
-                    <PanierPage itemPanier={this.state.itemPanier} /> 
-                
-            )
-            
-            
-        }
-    }
+
+        } 
 }
 
  export default SingleItem ;

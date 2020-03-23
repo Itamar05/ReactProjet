@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import './Entete' ;
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' ;
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -18,13 +18,13 @@ const Entete = () => {
                     
                             <div className="col-sm-5">
                                 <nav className="nav-links nav d-flex justify-content-center ">
-                                        <Router>
-                                            <Link to='/'><a className="nav-link black" href='' style={{marginTop: 25}} >Accueil</a></Link>
-                                            <Link to='/'><a className="nav-link black" href='' style={{marginTop: 25}} >Homme</a></Link>
-                                            <Link to='/'><a className="nav-link black" href='' style={{marginTop: 25}} >Femme</a></Link>
-                                            <Link to='/'><a className="nav-link black" href='' style={{marginTop: 25}} >Reductions</a></Link>
-                                       </Router>
-                                        <FontAwesomeIcon icon={faShoppingCart} />
+                                        
+                                        <Link to='/Accueil'  ><span className="nav-link black"  style={{marginTop: 25}} >Accueil   </span> </Link>
+                                        <Link to='/ListItem' ><span className="nav-link black"  style={{marginTop: 25}} >Homme     </span> </Link>
+                                        <Link to='/ListItem' ><span className="nav-link black"  style={{marginTop: 25}} >Femme     </span> </Link>
+                                        <Link to='/Reduction'><span className="nav-link black"  style={{marginTop: 25}} >Reductions</span> </Link>
+                                        <Link to='/Panier'   ><FontAwesomeIcon icon={faShoppingCart} /></Link>
+
                                 </nav>
                                 
                             </div>

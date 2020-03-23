@@ -34,13 +34,14 @@ class Panier extends Component {
                                     <p>{this.props.data.price}$</p>
                                 </div>
                                 <div className='' style={{width: '50%'}} >
-                               <div onClick={this.props.DisplayPanierPage} className='btn'>
-                            <Router>
-                                <Link to='/cart'>
-                                    <div >Voir mon panier</div>
-                                </Link>
-                            </Router>
-                                </div>
+                                    <div onClick={this.props.DisplayPanierPage} className='btn'>
+                          
+                                       <Link to='/panier'>
+                                        <div >Voir mon panier</div>
+                                       </Link>
+                              
+                                    </div>
+                               
                                     <hr/>
                                     <div onClick={this.props.Ntazi}>
                                         <button className='' onClick={this.hundleSubmit} >Continuez mes achats</button>
