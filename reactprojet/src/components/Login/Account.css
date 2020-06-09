@@ -1,0 +1,56 @@
+.supp {
+    color: rgb(32, 32, 207);
+    font-size: 20px;
+}
+
+.supp  {
+    cursor: pointer;
+}
+
+.ssDiv {
+    background: rgb(245, 245, 245);
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    border: solid black 0.5px;
+    /* border-radius: 10px; */
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.ajt {
+   margin-left: 10%;
+}
+
+.compteLi:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.an {
+    border: solid 1px rgb(204, 195, 195);
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    padding: 3%;
+}
+
+.an:hover {
+    border: solid 1px rgb(0, 0, 0);
+}
+
+.abn {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    margin-right: 2%;
+    padding: 3%;
+    border: solid 1px rgb(204, 195, 195);
+    margin-bottom: 3%;
+}
+
+.abn:hover {
+    border: solid 1px black;
+}

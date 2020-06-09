@@ -1,0 +1,22 @@
+.formWidth {
+    width : 100% ;
+}
+
+.input {
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+.sc {
+    font-size: 40px;
+}
+
+.inp {
+    width: 400px;
+    height: 50px;
+}
+
+.monCompteLi div {
+    padding: 2%;
+    width: 100%;
+}

@@ -1,15 +1,10 @@
 .artH1 {
-    width: 300px;
-    height: 350px;
+    width: 350px;
+    height: 400px;
     margin-bottom: 5px;
     margin-right: 20%; 
  } 
 
- /* .qzd1 div{
-    color: black;
-    display: flex;
-    flex-direction: column;
-} */
 
 .textItem {
     margin-left: 14%;
@@ -25,6 +20,13 @@
     padding: 5%;
 
 }
+
+.qzd1 {
+    width: 421px;
+    height: 495px;
+
+}
+
  .listItem {
     margin-left: auto;
     margin-right: auto;

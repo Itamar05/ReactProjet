@@ -1,0 +1,130 @@
+.formShipping {
+    margin-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.p {
+    margin-bottom: 0;
+}
+
+.a {
+    border: solid 1px rgb(204, 195, 195);
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    padding: 3%;
+}
+
+.a:hover {
+    border: solid 1px rgb(0, 0, 0);
+}
+
+
+.iconCheck:active {
+
+}
+
+.supprimer {
+    color: black;
+    margin-right: 70%;
+}
+
+.supprimer:hover  {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ab {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin-right: 2%;
+    padding: 3%;
+    border: solid 1px rgb(204, 195, 195);
+    margin-bottom: 3%;
+}
+
+.ab:hover {
+    border: solid 1px black;
+}
+/* 
+
+#labell {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 2% ;
+}
+
+#azaz {
+    visibility: hidden ;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+}
+
+input[type="radio"]:checked {
+    background: red ;
+}
+
+::selection {
+    border: solid 1px black;
+    color: yellow;
+} */
+
+.icon {
+    font-size: 50px;
+    margin-top: 26%;
+    margin-right: 40%;
+}
+
+.formAddress {
+    position: fixed ;
+    top: 10%;
+    bottom: 10% ;
+    right: 22% ;
+    left: 22% ;
+    background-color: white ; 
+    width: 55% ; 
+    height: 65% ;
+    border: 2px solid black ; 
+}    
+
+.formPr  {
+    z-index: 200 ;
+    width: 100% ;
+    height: 100% ;
+    /* background-color: rgba(0,0,0,.7) ; */
+    position: fixed;
+    top: 0;  
+
+}
+
+.iconClose {
+    margin-left: 97%;
+    cursor: pointer;
+}
+
+.formAddress form {
+    padding: 3%;
+}
+
+.boxShip {
+    width: 800px;
+    padding: 2%;
+    border: solid 1px rgb(204, 195, 195);
+    margin-bottom: 2%;
+}
+
+.boxShip:hover {
+    border: solid 1px black ;
+    cursor: pointer;
+}
+
+.ajtt {
+    width: 400px;
+    margin-left: 0;
+}

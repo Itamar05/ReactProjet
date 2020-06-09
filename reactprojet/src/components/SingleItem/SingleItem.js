@@ -3,9 +3,8 @@
  import './SingleItem.css'
  import Panier from '../Panier/Panier.js'
  import PanierPage from '../PanierPage/PanierPage.js'
-import { Link } from 'react-router-dom';
-//  import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-//  import ListItem from '../ListItem/ListItem';
+ import Carousel from '../Includes/Carousel'
+import { Link, Redirect } from 'react-router-dom';
 
  class SingleItem extends Component {
 
@@ -14,31 +13,64 @@ import { Link } from 'react-router-dom';
 
         this.state = {
             click: false,
-            clickPanier: false,
-            itemPanier:[]
+            redirect:'',
+            opacity: '1',
+            showLivraison: 'none',
+            size: '',
+            visibility: 'hidden'
         }
     }
 
-        // DisplayPanier = () =>  {
-        //     console.log(this.props.data, 'data');
-            
-        // this.setState({click: true})
-        // console.log('single item' , this.props.data);
-        //     }
-
-        
+        DisplayPanier = async () =>  {      
+        let data =this.props.data  ; 
+        data.size = this.state.size ;  
+        await this.setState({click: true, opacity: '0,5', data: data, visibility:'hidden'})
+        // await console.log(this.state.data, 'PROPS');
+        await this.props.resultPanier(this.state.data)
+        }
+    
         DisplayPanierPage = () =>  {
-                this.setState({clickPanier: true}) 
-                console.log('single item' , this.props.data);
-                this.props.resultPanier(this.props.data)
-               
+                this.setState({redirect: true}) 
+        }
+        
+        renderFalseClickpanier = () => {
+            this.setState({click: false})
+        }
+
+       showLiv = () => {
+            if (this.state.showLivraison == 'none') {
+                 this.setState({showLivraison: 'block'})
+            } else {
+                this.setState({showLivraison: 'none'}) }
+        }
+
+        getSize = (size) => {
+            this.setState({size: size})
+            if (this.state.visibility == 'visible') {
+                this.setState({visibility: 'hidden'})
             }
+        }
 
     render() {
        
-       
-            return <div className="container">
-            <div className="spGen">
+       if (this.state.redirect) {
+       return  <Redirect to='/panier' />
+        }
+    
+            return  <div>
+
+            <div className="containerr"  >
+            { this.state.click ? 
+            
+                        <Panier 
+                            data={this.props.data}
+                            DisplayPanierPage={this.DisplayPanierPage}
+                            renderFalseClickpanier={this.renderFalseClickpanier}
+                        />  
+                    :  null}
+
+                 {/* <Carousel /> */}
+            <div className="spGen" style={{paddingLeft: '5%'}} >
                 <div className="singleProductPage ">
                             {/* <img src={require(`../img/${data.img}`)} className="singleProductCss"  id="imgDefault" />  */}
                     <div className="reactAnglePage" >
@@ -54,30 +86,30 @@ import { Link } from 'react-router-dom';
                     <span>{this.props.data.name}</span>
         
                     <p> Selectionner la taille </p>
-                    
-                    <form method="post" name="form1">
-                        <select name="taille">
-                            <option value="40" className="">40</option>
-                            <option value="41" className="">41</option>
-                            <option value="42" className="">42</option>
-                            <option value="43" className="">43</option>
-                            <option value="44" className="">44</option>
-                            <option value="45" className="">45</option>
-                        </select>
-                    </form>
-                <Link to='/panier'>
-                    <button className="btn btn-success" onClick={this.DisplayPanierPage}>Ajouter au panier</button> <br/>
-                </Link>
-                    {/* { this.state.click ? 
-
-                        <Panier 
-                            data={this.props.data}
-                            Ntazi={this.Ntazi} 
-                            DisplayPanierPage={this.DisplayPanierPage}
-                        />  
-
-                    :  null}
-         */}
+                {/* <div style={{border: `solid 1px ${this.state.color}`}}> */}
+                    <p style={{visibility: `${this.state.visibility}`, width:'450px', color: 'red'}}>Veuillez choisir une taille</p>
+                    <div className='size'>
+                        <div className='sizeDef' onClick={() => this.getSize(39)}>39</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(39.5)}>39.5</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(40)}>40</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(40.5)}>40.5</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(41)}>41</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(41.5)}>41.5</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(42)}>42</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(42.5)}>42.5</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(43)}>43</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(44)}>44</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(44.5)}>44.5</div>
+                        <div className='sizeDef' onClick={() =>this.getSize(45)}>45</div>
+                    </div>
+                {/* </div> */}
+                { this.state.size != '' ?                     
+                
+                    <button className="btn btn-success" onClick={this.DisplayPanier} style={{margin: 0}}>Ajouter au panier</button> 
+                :   <div> <button className="btn btn-success" onClick={() => this.setState({visibility: 'visible'})} style={{margin: 0}}>Ajouter au panier</button> </div>
+            }
+                
+                   
                     <p> La Nike React Element 55 s'inspire des chaussures de running classiques, telles que la Nike
                         Internationalist, et intègre la technologie Nike React.
                     </p><br/>
@@ -87,33 +119,26 @@ import { Link } from 'react-router-dom';
                         <li>Article : CI3835-001</li>
                     </ul>
                     <div className="btn">
-                        <div id="lrg" >Livraison et retour gratuits</div>
+                        <div id="lrg" onClick={this.showLiv}>Livraison et retour gratuits</div>
                     </div>
-                    <div id="texteLivraison">
+                    <div id="texteLivraison" style={{display: this.state.showLivraison}} >
                         Livraison standard gratuite avec votre compte NikePlus. <br/>
                         <br/>
-                        <ul>
-                            <li>
-                                 Le délai des livraisons standard est de 2 à 4 jours ; nous effectuons des livraisons 5 jours sur 7.
-                            </li>
-                            <li>
-                                Pour une commande passée avant 13 heures avec option de livraison le lendemain, du lundi au jeudi.
-                            </li>
-                            <li>
-                                Possibilité de retirer les commandes en magasin Nike et dans une centaine de points de retrait
-                                 faciles d'accès.
-                            </li>
-                            <li>
-                                Vous pouvez retourner votre commande gratuitement, quelle que soit la raison, dans un délai de 60
-                                                    jours.
-                            </li>
-                        </ul>
-                        </div>
+                            <ul>
+                                <li>  Le délai des livraisons standard est de 2 à 4 jours ; nous effectuons des livraisons 5 jours sur 7.  </li>
+                                <li>  Pour une commande passée avant 13 heures avec option de livraison le lendemain, du lundi au jeudi.</li>
+                                <li> Possibilité de retirer les commandes en magasin Nike et dans une centaine de points de retrait faciles d'accès.</li>
+                                <li>Vous pouvez retourner votre commande gratuitement, quelle que soit la raison, dans un délai de 60 jours.</li>
+                            </ul>
+                    </div>
                     </div>
                 </div>
         </div>
-
+    </div>
         } 
 }
 
  export default SingleItem ;
+
+
+

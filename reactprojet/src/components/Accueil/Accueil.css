@@ -3,6 +3,26 @@
     width: 500px;
     display: flex;
     flex-direction: row;
-    
 }
 
+
+.ppp {
+    position: absolute;
+    justify-content: space-around;
+    width: 500px;
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 350px;
+    padding-top: 5%;
+}
+
+.linkL {
+    color: white;
+}
+
+.linkL:hover {
+    color: rgba(214, 214, 214, 0.5);
+    text-decoration: none;
+}
+/* .prpr {
+    display: flex;
+} */

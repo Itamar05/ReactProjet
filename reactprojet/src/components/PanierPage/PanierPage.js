@@ -1,63 +1,95 @@
-import React, { Component } from 'react'
-import ListItem from '../ListItem/ListItem'
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import React, { Component } from 'react' ;
+import { Redirect } from "react-router-dom";
+import './PanierPage.css'
 
 
  class PanierPage extends Component {
     constructor(props){
         super(props)
         this.state= {
-            click: false
+            click: false,
+            form : false
         }
     }
     
-    panier = (array) => {
-        this.setState({
-            panier: array
-        })
-    }
-    
-
     retourAchats = () => {
         this.setState({click: true})
     }
 
+    formShiping = () => {
+        this.setState({form: true})
+    }
+
+
     render() {
 
-        // console.log(this.props.itemPanier, 'props');
+        const itemPanier = this.props.itemPanier;
+        let total = 0;
+        let quantite = 0 ;
+        let y = [] ;
+       
+        const totalPrice = itemPanier.map(item => {  
+            y.push(item.id)
+         return total += parseInt(item.price);
+        });
 
-        let item = this.props.itemPanier.map((item) => {
+        const filteredPanier = itemPanier.reduce((acc, current) => {
+            const x = acc.find(item => item.id === current.id);
+            if (!x) {
+              return acc.concat([current]);
+            } else {
+              return acc;
+            }
+          }, []);
+
+        let item = filteredPanier.map((item) => {
+            
 			return (
-				<div className="" key={item.id} style={{width: '60%', height:'15%', border: '1px solid black', display:'flex', direction:'row', padding:'1%'}}>
-						<img src={require(`../../img/${item.img}`)} className="" alt={item.img} style={{width: '25%', height:'25%'}} />
-                            <nav style={{ margin:'3%'}} >
-                                {item.name}
-                                <br/>
-                                {item.price}$
-                                <br/>
-                                Taille: 
-                                <br/>
-                                Couleur:
-                            </nav>  
+				<div className="" key={item.id} style={{width: '60%', height:'15%', borderBottom: '1px solid grey', display:'flex', direction:'row', padding:'1%'}}>
+					<img src={require(`../../img/${item.img}`)} className="" alt={item.img} style={{width: '25%', height:'25%'}} />
+                        <nav style={{ margin:'3%'}} >
+                            {item.name}
+                            <br/>
+                            {item.price}$
+                            <br/>
+                            Taille: {item.size}
+                            <br/>
+                            Quantite: {quantite}
+                        </nav>  
 				</div>
 			);
         });
         
             if (this.state.click) {
-                return <ListItem />
-            } else {
+                return <Redirect to='/ListItem' />
+            } 
 
-        return <div className='container'>
+            // if (this.state.form) {
+            //     return <Redirect to='/ShippingForm' />
+            // } 
 
+            if (this.state.form) {
+                return <Redirect to='/loginToFinal' />
+            } 
+
+        return <div className='container' >
                 <hr/>
                 <h1>MON PANIER</h1>
-                {item}
-                <button className="btn btn-success" onClick={this.retourAchats}>Retourner a mes achats</button> <br/>
+                    <div>
+                        <div>
+                            {item}
+                        </div>
+                        <div>
+                          <p> <strong>Summary</strong> </p>
+                          <p>Total :         {total}$</p> 
+                          <div style={{display: 'flex'}}>
+                            <button className="btn" onClick={this.retourAchats} style={{width: '28%'}}>Retourner a mes achats</button> <br/>
+                            <button className="btn" onClick={this.formShiping} style={{width: '28%'}}>Finaliser ma commande</button> <br/>
+                          </div>
 
+                        </div>
+                    </div>
                 </div>
-            }
-           
-        
     }
 }
 

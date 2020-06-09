@@ -131,8 +131,8 @@ const Footer = () => {
                                     </li>
                                 </ul>
             
-              <div className="footer-copyright text-center py-3"  style={{color: '#5f5f5f'}} >© 2020 Copyright:
-                <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+              <div className="footer-copyright text-center py-3"  style={{color: '#5f5f5f'}} >© 2020 Copyright
+                {/* <a href="https://mdbootstrap.com/"> MDBootstrap.com</a> */}
               </div>
             
 </footer>

@@ -1,0 +1,33 @@
+.shipp {
+    margin-left: 5%; 
+}
+
+.df {
+    display: flex;
+
+}
+
+.paiements {
+    width: 900px;
+    margin-right: 30px;
+}
+
+.synthese {
+    width: 550px;
+    /* border: 1px rgb(201, 195, 195) solid; */
+    padding: 1%;
+}
+
+.FFW {
+    display: flex ;
+    flex-wrap: wrap ;
+    border: 1px rgb(201, 195, 195) solid ;
+    padding: 2%;
+    margin-bottom: 5%;
+}
+
+.mdpp  {
+    border: solid 1px rgb(185, 178, 178) ;
+    padding: 2%;
+    margin-bottom: 2%;
+}

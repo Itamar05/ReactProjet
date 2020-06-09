@@ -5,7 +5,6 @@ fetch(getURLDataServer)
     .then((res)=>{
         return res.json();
     }).then((data)=>{
-        console.log(data);
         display(data)
     })
 
@@ -32,3 +31,4 @@ function getOneShoe(id) {
         singleView(data)
     })
 }
+

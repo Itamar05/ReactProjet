@@ -1,9 +1,5 @@
 <?php
 
-
-
-
-
     class Database {
 
        private static $dbHost = "localhost";
@@ -13,9 +9,7 @@
 
        private static $conn = null ;
 
-
        static function connect() {
-
 
       try {
             self::$conn = new PDO("mysql:host=". self:: $dbHost .";dbname=" .self::$dbName, self::$username,self::$password);
@@ -27,13 +21,11 @@
      catch(PDOException $e) {
 
             echo "Connection failed: " . $e->getMessage();
-
           } 
           return self::$conn ;
     } 
 
      public static function disconect() {
-
         self::$conn = null ;
 
     } 
